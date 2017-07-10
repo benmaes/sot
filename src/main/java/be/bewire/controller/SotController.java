@@ -1,4 +1,4 @@
-package be.bewire;
+package be.bewire.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
