@@ -16,12 +16,12 @@ public class SotController {
     @Autowired
     private PropertyService propertyService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, path = "/message")
     public String message() {
         return message;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/property")
+    @RequestMapping(method = RequestMethod.GET, path = "/property")
     public String property() {
         return propertyService.getProperty();
     }
