@@ -1,7 +1,25 @@
 package be.bewire.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "department")
+@SequenceGenerator(name = "entity_sequence",
+    sequenceName = "department_seq", allocationSize = 1)
 public class Department {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+        generator = "entity_sequence")
     private Integer id;
+
+    @Column(name = "name")
     private String name;
 
     public Department() {

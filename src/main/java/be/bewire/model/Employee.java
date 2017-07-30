@@ -1,9 +1,31 @@
 package be.bewire.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "employee")
+@SequenceGenerator(name = "entity_sequence",
+    sequenceName = "employee_seq", allocationSize = 1)
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+        generator = "entity_sequence")
     private Integer id;
+
+    @Column(name = "lastname")
     private String lastname;
+
+    @Column(name = "firstname")
     private String firstname;
+
+    @Column(name = "department_id")
     private Integer departmentId;
 
     public Employee() {
