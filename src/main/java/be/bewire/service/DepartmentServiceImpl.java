@@ -24,12 +24,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Department> getDepartments() {
+    public List<Department> getAll() {
         return departments;
     }
 
     @Override
-    public Department getDepartmentById(final Integer id) {
+    public Department getById(final Integer id) {
         Optional<Department> department = departments.stream()
             .filter(d -> d.getId().equals(id)).findFirst();
         return department.get();
