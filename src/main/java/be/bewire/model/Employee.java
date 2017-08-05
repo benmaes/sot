@@ -9,14 +9,6 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(final Integer id, final String lastname,
-        final String firstname, final Integer departmentId) {
-        this.id = id;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.departmentId = departmentId;
-    }
-
     public Integer getId() {
         return id;
     }
