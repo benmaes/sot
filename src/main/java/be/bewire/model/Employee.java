@@ -5,18 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
-@SequenceGenerator(name = "entity_sequence",
-    sequenceName = "employee_seq", allocationSize = 1)
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-        generator = "entity_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "lastname")
@@ -27,17 +23,6 @@ public class Employee {
 
     @Column(name = "department_id")
     private Integer departmentId;
-
-    public Employee() {
-    }
-
-    public Employee(final Integer id, final String lastname,
-        final String firstname, final Integer departmentId) {
-        this.id = id;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.departmentId = departmentId;
-    }
 
     public Integer getId() {
         return id;

@@ -5,29 +5,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "department")
-@SequenceGenerator(name = "entity_sequence",
-    sequenceName = "department_seq", allocationSize = 1)
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-        generator = "entity_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    public Department() {
+    @Column(name = "created")
+    private Date created;
+
+    @Column(name = "modified")
+    private Date modified;
+
+    @PrePersist
+    void onCreate() {
+        this.setCreated(new Date());
+        this.setModified(new Date());
     }
 
-    public Department(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    @PreUpdate
+    void onUpdate() {
+        this.setModified(new Date());
     }
 
     public Integer getId() {
@@ -44,5 +53,21 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(final Date created) {
+        this.created = created;
+    }
+
+    public Date getModified() {
+        return modified;
+    }
+
+    public void setModified(final Date modified) {
+        this.modified = modified;
     }
 }
