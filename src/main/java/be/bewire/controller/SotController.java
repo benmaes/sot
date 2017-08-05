@@ -1,5 +1,6 @@
 package be.bewire.controller;
 
+import be.bewire.config.property.PersonProperties;
 import be.bewire.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +17,10 @@ public class SotController {
     @Autowired
     private PropertyService propertyService;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/message")
+    @Autowired
+    private PersonProperties personProperties;
+
+    @RequestMapping(method = RequestMethod.GET, path = ("/message"))
     public String message() {
         return message;
     }
@@ -24,5 +28,11 @@ public class SotController {
     @RequestMapping(method = RequestMethod.GET, path = "/property")
     public String property() {
         return propertyService.getProperty();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/person")
+    public String person() {
+        return String.format("Hello %s %s!", personProperties.getFirstname(),
+            personProperties.getLastname());
     }
 }
