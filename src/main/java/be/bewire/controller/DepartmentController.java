@@ -5,6 +5,7 @@ import be.bewire.model.Employee;
 import be.bewire.service.DepartmentService;
 import be.bewire.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,12 @@ public class DepartmentController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private CounterService counterService;
+
     @GetMapping(path = "/departments")
     public List<Department> getDepartments() {
+        counterService.increment("counter.services.departments.invoke");
         return departmentService.getAll();
     }
 
