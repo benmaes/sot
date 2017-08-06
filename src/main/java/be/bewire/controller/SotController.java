@@ -14,11 +14,15 @@ public class SotController {
     @Value("${message}")
     private String message;
 
-    @Autowired
     private PropertyService propertyService;
+    private PersonProperties personProperties;
 
     @Autowired
-    private PersonProperties personProperties;
+    public SotController(final PropertyService propertyService,
+        final PersonProperties personProperties) {
+        this.propertyService = propertyService;
+        this.personProperties = personProperties;
+    }
 
     @RequestMapping(method = RequestMethod.GET, path = ("/message"))
     public String message() {

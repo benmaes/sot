@@ -12,8 +12,12 @@ import java.util.List;
 @RestController
 public class EmployeeController {
 
-    @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    public EmployeeController(final EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @GetMapping(path = "/employees")
     public List<Employee> getEmployees() {

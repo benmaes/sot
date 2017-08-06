@@ -10,8 +10,12 @@ import java.util.List;
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    public EmployeeServiceImpl(final EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @Override
     public List<Employee> getAll() {
