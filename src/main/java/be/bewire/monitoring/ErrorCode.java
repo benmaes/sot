@@ -1,4 +1,4 @@
-package be.bewire.health;
+package be.bewire.monitoring;
 
 public enum ErrorCode {
 

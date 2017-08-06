@@ -1,4 +1,4 @@
-package be.bewire.health;
+package be.bewire.monitoring;
 
 import be.bewire.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
