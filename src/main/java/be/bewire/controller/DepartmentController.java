@@ -20,11 +20,15 @@ import java.util.List;
 @RestController
 public class DepartmentController {
 
-    @Autowired
     private DepartmentService departmentService;
+    private EmployeeService employeeService;
 
     @Autowired
-    private EmployeeService employeeService;
+    public DepartmentController(final DepartmentService departmentService,
+        final EmployeeService employeeService) {
+        this.departmentService = departmentService;
+        this.employeeService = employeeService;
+    }
 
     @GetMapping(path = "/departments")
     public List<Department> getDepartments() {
